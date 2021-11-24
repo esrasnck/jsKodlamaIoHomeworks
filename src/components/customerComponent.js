@@ -1,7 +1,5 @@
 import CustomerService from "../services/customerService.js";
-import EmployeeService from "../services/employeeService.js";
 import CustomerValidation from "../validations/customerValidation.js";
-import UserValidaton from "../validations/userValidation.js";
 import Customer from "../models/customer.js"
 
 
