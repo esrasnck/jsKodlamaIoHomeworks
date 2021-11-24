@@ -5,4 +5,4 @@ export default class DataError{
     }
 }
 
-// refaktör edilecek
+// refaktör edilecek => silinecek

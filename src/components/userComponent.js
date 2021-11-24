@@ -2,39 +2,19 @@ import { BaseLogger, ElasticLogger, MongoLogger } from "../crossCuttingConcerns/
 import { users } from "../data/users.js";
 import Customer from "../models/customer.js";
 import User from "../models/user.js";
+import CustomerService from "../services/customerService.js";
+import EmployeeService from "../services/employeeService.js";
 import UserService from "../services/userService.js"
-
+import CustomerValidation from "../validations/customerValidation.js"
+import EmployeeValidation from "../validations/employeeValidation.js"
+import UserValidaton from "../validations/userValidation.js";
 
 console.log("user component loaded")
 // kullanıcıları listelemek istedik örnek olarak
 
 let logger1 = new MongoLogger();
+let userValidaton = new UserValidaton();
 let userService = new UserService(logger1);
 
-let user1 = new User(1,"Engin","Demiroğ","Ankara");
-let user2 = new User(2,"Baran","Gökçekli","Muğla");
-userService.add(user1);
-userService.add(user2);
+userService.load();
 
-//console.log(userService.list())
-//console.log(userService.getById(2))
-
-
-let customer = {id:1,firstName:"Engin"}
-
-// prototyping = js de sonradan bir değer ekleyebilirsiniz.
-customer.lastName ="Demiroğ"
-
-console.log(customer.lastName)
-
-console.log("--------------------------------------")
-userService.load(); 
-
-let customerToAdd = new Customer(1,"Seda","Yılmaz","Ankara","asdasdasdasda")
-customerToAdd.type ="customer" // protype
-
-userService.add(customerToAdd)
-console.log(userService.customers)
-console.log(userService.employees)
-console.log(userService.errors)
-console.log(userService.getCustomersSorted())
