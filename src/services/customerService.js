@@ -45,11 +45,8 @@ export default class CustomerService {
 
   }
 
-  getCustomersSorted(){
-
-    // elimizdeki datalar obje. ilkel tip arrayi. bu yüzden bizim bir sort mantığını vermemiz lazım.
+  getCustomersSorted(){ 
     return  this.customers.sort((customer1,customer2)=>{
-          // buraları dinamik yapabiliriz customer1["firstName"] => gibi
           if(customer1.firstName>customer2.firstName){
               return 1;
           }else if(customer1.firstName===customer2.firstName){

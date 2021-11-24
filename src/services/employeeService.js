@@ -49,10 +49,8 @@ export default class EmployeeService {
  }
 
  getEmployeesSorted(){
-
-  // elimizdeki datalar obje. ilkel tip arrayi. bu yüzden bizim bir sort mantığını vermemiz lazım.
   return  this.employees.sort((employee1,employee2)=>{
-        // buraları dinamik yapabiliriz customer1["firstName"] => gibi
+    
         if(employee1.firstName>employee2.firstName){
             return 1;
         }else if(employee1.firstName===employee2.firstName){

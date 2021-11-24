@@ -2,8 +2,8 @@ export default class BusinessRules{
 
     static run(...logics){
         for (const logic of logics) {
-          console.log(logic)  
-            if(!logic.success){
+         
+            if(logic.success ===false){
                  return logic;
              }
         }

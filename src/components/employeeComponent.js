@@ -13,4 +13,4 @@ console.log(employeeService.employeeValidation)
 
 console.log(employeeService.listEmployee());
 console.log(employeeService.getEmployeeById(3))
-employeeService.load()
+console.log(employeeService.load())
