@@ -1,3 +1,4 @@
+import { CUSTOMER} from "../data/types.js";
 import { users } from "../data/users.js";
 import ErrorResult from "../utilities/results/errorResult.js";
 import SuccessResult from "../utilities/results/successResult.js";
@@ -7,20 +8,23 @@ export default class CustomerService {
   constructor(customerValidation) {
     this.customers = [];
     this.customerValidation = customerValidation;
+    this.types=CUSTOMER
     this.load();
   }
 
   load() {
     for (const user of users) {
   
-      if (
-        user.type === "customer" &&
-      this.customerValidation.checkCustomerValidty(user)
-      ) {
-        
+      if ( this.checkIfItsCustomer(user.type) && this.customerValidation.checkCustomerValidty(user)) {
         this.customers.push(user);
-       
       }
+    }
+  }
+
+  checkIfItsCustomer(user){
+
+    if(user.type===CUSTOMER){
+      return true
     }
   }
 

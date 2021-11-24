@@ -5,9 +5,10 @@ import ErrorDataResult from "../utilities/results/errorDataResult.js";
 export default class CustomerValidation  {
   constructor(userValidaton) {
     this.userValidation =userValidaton
-    this.customerValidationErrors = []   
+    this.customerValidationErrors = []
+  
   }
-
+   // SOLID => s: single responsibility 
   checkCustomerValidty(customer) {
   
     let requiredFields = "creditCardNumber".split(" ");

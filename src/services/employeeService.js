@@ -1,5 +1,5 @@
+import { EMPLOYEE } from "../data/types.js";
 import { users } from "../data/users.js";
-import BusinessRules from "../utilities/business/businessRules.js";
 import ErrorResult from "../utilities/results/errorResult.js";
 import SuccessResult from "../utilities/results/successResult.js";
 
@@ -7,19 +7,28 @@ export default class EmployeeService {
   constructor(employeeValidation) {
    this.employeeValidation = employeeValidation;
    this.employees = [];
+   this.types=EMPLOYEE
    this.load();
+ 
   }
 
   load() {
     for (const user of users) {
-      if ( 
-        user.type === "employee" &&
-        this.employeeValidation.checkEmployeeValidty(user)
-      ) {
+      if ( this.checkIfItsEmployee(user) && this.employeeValidation.checkEmployeeValidty(user)) {
         this.employees.push(user);
       }
     }
   }
+  
+  checkIfItsEmployee(user){
+    if(user.type===this.types){
+     
+      return true
+    }
+    return false
+  }
+
+
   add(employee){
     let result = this.employeeValidation.checkEmployeeValidty(employee);
     if(result === true){
