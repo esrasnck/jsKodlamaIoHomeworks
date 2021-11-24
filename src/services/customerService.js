@@ -1,10 +1,13 @@
 import { users } from "../data/users.js";
-import BusinessRules from "../utilities/business/businessRules.js";
+import ErrorResult from "../utilities/results/errorResult.js";
+import SuccessResult from "../utilities/results/successResult.js";
+
 
 export default class CustomerService {
   constructor(customerValidation) {
     this.customers = [];
     this.customerValidation = customerValidation;
+    this.load();
   }
 
   load() {
@@ -30,7 +33,13 @@ export default class CustomerService {
   }
 
   add(customer){
-    
+    let result = this.customerValidation.checkCustomerValidty(customer);
+    if(result === true){
+       this.customers.push(customer);
+       return new SuccessResult("Customer added !")
+    }
+    return new ErrorResult("Customer Cannot added !")
+
   }
 
   getCustomersSorted(){

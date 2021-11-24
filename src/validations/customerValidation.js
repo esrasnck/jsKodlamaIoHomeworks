@@ -14,10 +14,10 @@ export default class CustomerValidation  {
     let isUserValid =this.userValidation.checkUserValidty(customer);
     let isUserAgeValid = this.userValidation.checkUserAge(customer)
   
-    if(isUserValid==undefined){
+    if(isUserValid.length!==0){
         this.customerValidationErrors.push(isUserValid)
     }
-    if(isUserAgeValid==undefined){
+    if(isUserAgeValid.length!==0){
         this.customerValidationErrors.push(isUserAgeValid)
     }
     for (const field of requiredFields) {

@@ -17,7 +17,7 @@ export default class UserValidaton {
       
       }
     }
-    return this.errors;
+    return this.userValidationErrors;
   }
 
   checkUserAge(user) {

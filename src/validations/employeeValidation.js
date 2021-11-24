@@ -10,12 +10,13 @@ export default class EmployeeValidation {
   checkEmployeeValidty(employee) {
     let requiredFields = "salary".split(" ");
     let isUserValid = this.userValidation.checkUserValidty(employee);
+
     let isUserAgeValid = this.userValidation.checkUserAge(employee);
 
-    if (isUserValid == undefined) {
+    if (isUserValid.length !==0) {
       this.employeeValidationErrors.push(isUserValid);
     }
-    if (isUserAgeValid == undefined) {
+    if (isUserAgeValid.length !==0) {
       this.employeeValidationErrors.push(isUserAgeValid);
     }
     for (const field of requiredFields) {

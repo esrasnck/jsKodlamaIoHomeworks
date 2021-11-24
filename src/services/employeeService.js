@@ -1,11 +1,13 @@
 import { users } from "../data/users.js";
 import BusinessRules from "../utilities/business/businessRules.js";
+import ErrorResult from "../utilities/results/errorResult.js";
+import SuccessResult from "../utilities/results/successResult.js";
 
 export default class EmployeeService {
   constructor(employeeValidation) {
-   
-  this.employeeValidation = employeeValidation;
+   this.employeeValidation = employeeValidation;
    this.employees = [];
+   this.load();
   }
 
   load() {
@@ -17,6 +19,15 @@ export default class EmployeeService {
         this.employees.push(user);
       }
     }
+  }
+  add(employee){
+    let result = this.employeeValidation.checkEmployeeValidty(employee);
+    if(result === true){
+       this.employee.push(employee);
+       return new SuccessResult("Customer added !")
+    }
+    return new ErrorResult("Customer Cannot added !")
+
   }
 
 
