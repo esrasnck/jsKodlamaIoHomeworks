@@ -14,7 +14,7 @@ export default class EmployeeService {
 
   load() {
     for (const user of users) {
-      if ( this.checkIfItsEmployee(user) && this.employeeValidation.checkEmployeeValidty(user)) {
+      if (this.checkIfItsEmployee(user) && this.employeeValidation.checkEmployeeValidty(user)) {
         this.employees.push(user);
       }
     }
@@ -32,7 +32,7 @@ export default class EmployeeService {
   add(employee){
     let result = this.employeeValidation.checkEmployeeValidty(employee);
     if(result === true){
-       this.employee.push(employee);
+       this.employees.push(employee);
        return new SuccessResult("Customer added !")
     }
     return new ErrorResult("Customer Cannot added !")

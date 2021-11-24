@@ -1,36 +1,23 @@
+import { CUSTOMER_VALIDATION } from "../data/types.js";
 import ErrorDataResult from "../utilities/results/errorDataResult.js";
 
-// refaktör edilecek
 
 export default class CustomerValidation  {
-  constructor(userValidaton) {
-    this.userValidation =userValidaton
+  constructor() {
     this.customerValidationErrors = []
-  
+    this.requiredFields = CUSTOMER_VALIDATION.split(" ")
   }
-   // SOLID => s: single responsibility 
+  
   checkCustomerValidty(customer) {
-  
-    let requiredFields = "creditCardNumber".split(" ");
-    let isUserValid =this.userValidation.checkUserValidty(customer);
-    let isUserAgeValid = this.userValidation.checkUserAge(customer)
-  
-    if(isUserValid.length!==0){
-        this.customerValidationErrors.push(isUserValid)
-    }
-    if(isUserAgeValid.length!==0){
-        this.customerValidationErrors.push(isUserAgeValid)
-    }
-    for (const field of requiredFields) {
+    for (const field of this.requiredFields) {
       if (!customer[field]) {
-       
         this.customerValidationErrors.push(
           new ErrorDataResult(
             `Validation problem. ${field} is required`,
             customer
           )
         );
-        return false;
+       
       }
     }
     return true;

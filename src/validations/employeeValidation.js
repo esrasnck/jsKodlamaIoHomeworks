@@ -1,25 +1,15 @@
 import UserValidaton from "./userValidation.js";
 import ErrorDataResult from "../utilities/results/errorDataResult.js";
+import { EMPLOYEE_VALIDATION } from "../data/types.js";
 
 export default class EmployeeValidation {
-  constructor(userValidation) {
-    this.userValidation = userValidation;
+  constructor() {
     this.employeeValidationErrors = [];
+    this.requiredFields = EMPLOYEE_VALIDATION.split(" ")
   }
 
   checkEmployeeValidty(employee) {
-    let requiredFields = "salary".split(" ");
-    let isUserValid = this.userValidation.checkUserValidty(employee);
-
-    let isUserAgeValid = this.userValidation.checkUserAge(employee);
-
-    if (isUserValid.length !==0) {
-      this.employeeValidationErrors.push(isUserValid);
-    }
-    if (isUserAgeValid.length !==0) {
-      this.employeeValidationErrors.push(isUserAgeValid);
-    }
-    for (const field of requiredFields) {
+    for (const field of this.requiredFields) {
       if (!employee[field]) {
         this.employeeValidationErrors.push(
           new ErrorDataResult(
@@ -27,9 +17,7 @@ export default class EmployeeValidation {
             employee
           )
         );
-        return false;
       }
-  
     }
     return true;
   }

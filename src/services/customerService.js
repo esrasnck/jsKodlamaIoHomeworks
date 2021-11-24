@@ -14,7 +14,6 @@ export default class CustomerService {
 
   load() {
     for (const user of users) {
-  
       if ( this.checkIfItsCustomer(user.type) && this.customerValidation.checkCustomerValidty(user)) {
         this.customers.push(user);
       }
